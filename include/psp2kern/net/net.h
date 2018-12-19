@@ -551,12 +551,16 @@ int ksceNetRecvfrom(int s, void *buf, unsigned int len, int flags, SceNetSockadd
 int ksceNetSendto(int s, const void *msg, unsigned int len, int flags, const SceNetSockaddr *to, unsigned int tolen);
 int ksceNetSetsockopt(int s, int level, int optname, const void *optval, unsigned int optlen);
 int ksceNetClose(int s);
-
+int ksceNetGetpeername(int s, SceNetSockaddr *name, unsigned int *namelen);
+int ksceNetGetsockname(int s, SceNetSockaddr *name, unsigned int *namelen);
+int ksceNetGetsockopt(int s, int level, int optname, void *optval, unsigned int *optlen);
+int ksceNetShutdown(int s, int how);
+ 
 #define ksceNetRecv(s, buf, len, flags) ksceNetRecvfrom(s, buf, len, flags, NULL, 0)
 #define ksceNetSend(s, msg, len, flags) ksceNetSendto(s, msg, len, flags, NULL, 0)
 #define ksceNetSocketClose ksceNetClose
 
-/* fixme ? */
+/* fixme ? / findme ? */
 #define ksceNetHtons __builtin_bswap16
 #define ksceNetHtonl __builtin_bswap32
 
